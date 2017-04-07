@@ -18,3 +18,15 @@ application/vnd.twitchtv[v3]+json
 https://api.twitch.tv/kraken/streams?game=StarCraft+II%3A+Heart+of+the+Swarm&channel=test_channel,test_channel2
 
 */
+$(document).on(ready(function(){
+
+  function APICall(){
+          $.ajax({
+            type:"GET",
+            url: "https://api.twitch.tv/kraken/channels/nl_kripp"
+            dataType: "jsonp",
+            success: function(data){
+              console.log(data);
+            }
+            APICall();
+});
