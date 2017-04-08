@@ -1,3 +1,11 @@
+.online{
+  color: green;
+}
+
+.offline{
+  color: red;
+}
+
 .channelLogo{
   border-radius: 50px;
 }
