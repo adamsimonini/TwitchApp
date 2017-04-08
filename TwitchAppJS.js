@@ -19,25 +19,37 @@ https://api.twitch.tv/kraken/streams?game=StarCraft+II%3A+Heart+of+the+Swarm&cha
 
 */
 $(document).ready(function(){
-  var channelName = "freecodecamp";
 
-    function APICall(){
-      $.ajax({
-        dataType: "jsonp",
-        url: 'https://wind-bow.gomix.me/twitch-api/channels/' + channelName + '?callback=?',
-        success: function(data){
-          console.log(data);
-          $("#logo").innerHTML = "<img src='https://static-cdn.jtvnw.net/jtv_user_pictures/freecodecamp-profile_image-d9514f2df0962329-300x300.png'>"
-          $("#test").append(data.game);
-          $("#test").append(data.status);
-          $("#test").append(data._id);
-          console.log(data.display_name);
-          console.log(data.status);
-          console.log(data._id);
-        }
-     });
-   }
-  APICall();
+var master = document.getElementById("masterDiv");
+
+  function generateDivs(i, data){
+
+      var newDiv = document.createElement("div");
+      newDiv.id = "feed" + i.toString();
+      newDiv.class = "row text-center";
+      newDiv.innerText = data.display_name;
+    //  newDiv.innerHTML = "<img style='width: 5%; height: 5%;' src='http://res.cloudinary.com/redkasa/image/upload/v1491615507/580b57fcd9996e24bc43c540_sfri3x.png'>";
+      master.appendChild(newDiv);
+  }
+  var prepopulated = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "storbeck", "habathcx", "RobotCaleb", "noobs2ninjas"]
+
+    function initialAPICall(){
+      for(var i=0;i<prepopulated.length;i++){
+        $.ajax({
+          dataType: "jsonp",
+          url: 'https://wind-bow.gomix.me/twitch-api/channels/' + prepopulated[i] + '?callback=?',
+          success: function(data){
+            console.log(data);
+            document.getElementById("logo1").src = data.logo;
+            document.getElementById("name1").innerHTML = data.display_name;
+            document.getElementById("status1").innerHTML = data.status;
+            document.getElementById("logolink1").href = data.url;
+            generateDivs(i, data);
+            }
+          });
+       }
+     }
+  initialAPICall(prepopulated);
 });
 
 

@@ -1,6 +1,8 @@
+.channelLogo{
+  border-radius: 50px;
+}
 
-
-.logo{
+.gameLogo{
     background-color: white;
     border-radius: 30px;
     padding-top: 1%;
@@ -8,7 +10,7 @@
     opacity: 0.9;
 }
 
-.logo:hover{
+.gameLogo:hover{
     background-color: #17141f;
     opacity: 0.9;
      -webkit-transition: background-color 0.5s ease-in;
@@ -48,3 +50,7 @@ h1 {
   text-shadow: 2px 0px #59448a;
   font-size: 5em
 }
+
+/* Possible Background Image Addition
+style="background-image: url(https://static-cdn.jtvnw.net/jtv_user_pictures/freecodecamp-profile_banner-6f5e3445ff474aec-480.png); height: 50%; width: 50%; border: 1px solid black; opacity: 0.5;"
+*/
