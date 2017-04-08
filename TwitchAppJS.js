@@ -1,25 +1,8 @@
 
-/* Roof for all Twitch.tv API requests
-https://api.twitch.tv/kraken/"channel"
-
-...callback=foo
-
-
-Twitch ClientID = "vrildt3l2ipx57q51hytkgthgzvyku";
-
-Secret = "b6osn0z5n5xq208ey6xoz51kynkus0";
-
-application/vnd.twitchtv[v3]+json
-
-  $.getJSON
-
-  https://api.twitch.tv/kraken/channels/nl_kripp
-
-https://api.twitch.tv/kraken/streams?game=StarCraft+II%3A+Heart+of+the+Swarm&channel=test_channel,test_channel2
-
-*/
 $(document).ready(function(){
 
+var counter = 0;
+var gameList = [];
 var master = document.getElementById("masterDiv");
 
   function generateDivs(counter, data){
@@ -65,22 +48,24 @@ var master = document.getElementById("masterDiv");
           gameLogoURL = "http://res.cloudinary.com/redkasa/image/upload/v1491662583/unknown_hokznt.png";
       }
 
-      newDiv.innerHTML = '<div class="row text-center"><div class="large-1 columns small-2 large-offset-3 small-offset-3"><a id="logolink' + counter + '" href="" target="_blank"><img id="logo' + counter + '" class="channelLogo" src=""></a></div><div id="name' + counter + '" class="large-4 small-4 columns" style="border-style:solid;"></div><div class="large-1 small-2 columns small-offset-0"><img id="gameCheck' + counter + '" src=' + gameLogoURL + '></div><div class="large-1 columns small-offset-0"></div></div><div class="row text-center"><div id="status' + counter + '" class="large-4 small-4 large-offset-4 small-offset-5 columns" style="border-style:solid;"></div></div>';
+      newDiv.innerHTML = '<div id="parentDiv' + counter + '" class="row text-center"><div class="large-1 small-1 columns large-offset-3 small-offset-3"><a id="logolink' + counter + '" href=' + data.url + ' target="_blank"><img id="logo' + counter + '" class="channelLogo" src=""></a></div><a href=' + data.url + ' target="_blank"><div id="name' + counter + '" class="small-4 large-4 columns" style="border-style:solid;"><div class="row"><div id="status' + counter + '" class="large-12 small-12" style="border-style:solid;">STATUS</div></div></div></a><div class="large-1 small-2 columns"><img id="gameCheck height="75%" width="75%"' + counter + '" src=' + gameLogoURL + '></div><div class="large-1 columns end"></div></div>';
+
       master.appendChild(newDiv);
       document.getElementById("logo" + counter).src = data.logo;
       document.getElementById("name" + counter).innerHTML = data.display_name;
-      document.getElementById("status" + counter).innerHTML = data.status;
+  //  document.getElementById("status" + counter).innerHTML = data.status;
       document.getElementById("logolink" + counter).href = data.url;
+      gameList.push(data.game);
+      console.log(gameList);
 
   }
-  var prepopulated = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "faker", "pago3", "RobotCaleb", "noobs2ninjas", "thijshs", "timthetatman"]
+  var channelArray = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "faker", "pago3", "RobotCaleb", "noobs2ninjas", "thijshs", "timthetatman"]
 
     function initialAPICall(){
-      var counter = 0;
-      for (var i=0;i<prepopulated.length;i++){
+      for (var i=0;i<channelArray.length;i++){
         $.ajax({
           dataType: "jsonp",
-          url: 'https://wind-bow.gomix.me/twitch-api/channels/' + prepopulated[i] + '?callback=?',
+          url: 'https://wind-bow.gomix.me/twitch-api/channels/' + channelArray[i] + '?callback=?',
           success: function(data){
             console.log(data);
             counter++;
@@ -89,29 +74,20 @@ var master = document.getElementById("masterDiv");
           });
        }
      }
-  initialAPICall(prepopulated);
-});
-
-
-
+  initialAPICall(channelArray);
 /*
+//Upon clicking the gamelogo, .hide() the divs not associated with that game
+  $(".gameLogo").on("click", function(){
+    var selectedGame = $(this).children().attr("src");
+    alert(selectedGame);
+    for(i=0;i<channelArray.length;i++){
+      if(selectedGame != $("#name" + i). ){
+        return;
+      }else{
+        return;
+      }
+    }
 
-$.getJSON('https://wind-bow.gomix.me/twitch-api/channels/freecodecamp?callback=?', function(data){
-  var json = data;
-  var name = json[]
-});
-}
-
-
-
-  function APICall(){
-          $.ajax({
-            type:"GET",
-            url: "https://api.twitch.tv/kraken/streams/nl_kripp"
-            dataType: "jsonp",
-            success: function(data){
-              console.log(data);
-            }
-            APICall();
-});
+  });
 */
+});
