@@ -75,19 +75,19 @@ var master = document.getElementById("masterDiv");
      }
   initialAPICall(channelArray);
 
-//Take string and append value as new channel
 
   function refocus(){
     $("#addChannelForm").on("focus", $("#addChannelForm").attr("placeholder", "add new channel by name"));
   }
 
-  $("#addChannelBtn").on("click",function(){
+//Take string, check if it's automatically invalid or not, and pass it to function APICheck
+  $("#addChannelBtn").on("click",function(e){
+    e.preventDefault();
     var x = document.getElementById("addChannelForm").value;
     var newChannelName = x.replace(/\s+/g, '');
     if(newChannelName != "" && newChannelName != null && newChannelName != undefined){
       document.getElementById("addChannelForm").value = "";
-      channelArray.push(newChannelName);
-      initialAPICall(channelArray);
+      APICheck(newChannelName);
     }else{
       $("#addChannelForm").attr("placeholder", "invalid channel name");
       $("#addChannelForm").addClass("invalid");
