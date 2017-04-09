@@ -6,6 +6,10 @@
   color: red;
 }
 
+.invalid{
+  background-color: #9e0000;
+}
+
 .channelLogo{
   border-radius: 50px;
 }

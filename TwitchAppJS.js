@@ -56,7 +56,6 @@ var master = document.getElementById("masterDiv");
   //  document.getElementById("status" + counter).innerHTML = data.status;
       document.getElementById("logolink" + counter).href = data.url;
       gameList.push(data.game);
-      console.log(gameList);
 
   }
   var channelArray = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "faker", "pago3", "RobotCaleb", "noobs2ninjas", "thijshs", "timthetatman"]
@@ -67,7 +66,7 @@ var master = document.getElementById("masterDiv");
           dataType: "jsonp",
           url: 'https://wind-bow.gomix.me/twitch-api/channels/' + channelArray[i] + '?callback=?',
           success: function(data){
-            console.log(data);
+            console.log(channelArray);
             counter++;
             generateDivs(counter, data)
             }
@@ -75,6 +74,28 @@ var master = document.getElementById("masterDiv");
        }
      }
   initialAPICall(channelArray);
+
+//Take string and append value as new channel
+
+  function refocus(){
+    $("#addChannelForm").on("focus", $("#addChannelForm").attr("placeholder", "add new channel by name"));
+  }
+
+  $("#addChannelBtn").on("click",function(){
+    var x = document.getElementById("addChannelForm").value;
+    var newChannelName = x.replace(/\s+/g, '');
+    if(newChannelName != "" && newChannelName != null && newChannelName != undefined){
+      document.getElementById("addChannelForm").value = "";
+      channelArray.push(newChannelName);
+      initialAPICall(channelArray);
+    }else{
+      $("#addChannelForm").attr("placeholder", "invalid channel name");
+      $("#addChannelForm").addClass("invalid");
+      return;
+    }
+
+  });
+
 /*
 //Upon clicking the gamelogo, .hide() the divs not associated with that game
   $(".gameLogo").on("click", function(){

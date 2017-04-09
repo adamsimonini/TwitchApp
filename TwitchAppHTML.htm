@@ -70,15 +70,36 @@
     </div>
     <br>
 
-    <!-- Search Field -->
-    <div class="row text-center">
-      <div class="small-1 columns">
+<!--Add A Channel -->
+<form>
+  <div class="large-12 columns">
+    <div class="row collapse postfix-round">
+      <div class="large-4 small-4 large-offset-4 small-offset-4 columns">
+        <input id="addChannelForm" onsubmit="return false" class="text-center" type="text" placeholder="add new channel by name">
       </div>
-      <input class="small-6 columns small-offset-3 text-center" placeholder="search channel by name">
-      </input>
-      <div class="small-2 columns">
+      <div class="large-1 small-3 columns">
+        <button id="addChannelBtn" href="#" class="button postfix"><i class="fa fa-plus fa-1x FA_Icon"></i></button>
+      </div>
+      <div class="large-2 small-3 columns">
       </div>
     </div>
+  </div>
+</form>
+    <!-- Search Field -->
+    <form>
+      <div class="large-12 columns">
+        <div class="row collapse postfix-round">
+          <div class="large-4 small-4 large-offset-4 small-offset-4 columns">
+            <input onsubmit="return false" class="text-center" type="text" placeholder="search channels by name">
+          </div>
+          <div class="large-1 small-3 columns">
+            <button href="#" class="button postfix"><i class="fa fa-search fa-1x FA_Icon"></i></button>
+          </div>
+          <div class="large-2 small-3 columns">
+          </div>
+        </div>
+      </div>
+    </form>
 <br>
 
 <!--The Master Div That Will House All Dynamically Created Divs-->
