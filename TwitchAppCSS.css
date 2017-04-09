@@ -3,6 +3,10 @@ a{
   color: #59448a;
 }
 
+a:hover{
+  color: #cd77ff;
+}
+
 .online{
   color: green;
 }
@@ -12,11 +16,15 @@ a{
 }
 
 .invalid{
-  background-color: #9e0000;
+    background-color: #9e0000;
 }
 
 .channelLogo{
-  border-radius: 50px;
+    border-radius: 50px;
+}
+
+.channelLogoDiv{
+    padding-bottom: 2%;
 }
 
 .gameLogo{
