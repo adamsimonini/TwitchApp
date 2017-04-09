@@ -52,7 +52,7 @@ var channelArray = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "faker
 
       newDiv.innerHTML = '<div id="parentDiv' + counter + '" class="row text-center"><div class="large-1 small-1 columns large-offset-3 small-offset-3"><a id="logolink' + counter + '" href=' + data.url + ' target="_blank"><img id="logo' + counter + '" class="channelLogo" src=""></a></div><a href=' + data.url + ' target="_blank"><div id="name' + counter + '" class="small-4 large-4 columns" style="border-style:solid;"><div class="row"><div id="status' + counter + '" class="large-12 small-12" style="border-style:solid;">STATUS</div></div></div></a><div class="large-1 small-2 columns"><img id="gameCheck height="75%" width="75%"' + counter + '" src=' + gameLogoURL + '></div><div class="large-1 columns end"></div></div>';
 
-      master.appendChild(newDiv);
+      master.prepend(newDiv);
       document.getElementById("logo" + counter).src = data.logo;
       document.getElementById("name" + counter).innerHTML = data.display_name;
   //  document.getElementById("status" + counter).innerHTML = data.status;
@@ -76,13 +76,6 @@ var channelArray = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "faker
      }
   initialAPICall(channelArray);
 
-//After running initial construction of divs, empty out channelArray
-  function emptyChannelArray(){
-    channelArray.splice(0, channelArray.length);
-  }
-
-  emptyChannelArray();
-
 // Removes invalid CSS class from form field
   function revalidate(){
     $(document).on("click", function(){
@@ -99,13 +92,13 @@ var channelArray = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "faker
 
 //Check if data.error exists, and if it doesn't then the JSON request worked
         if(data.error == null){
-          alert("success!")
-          channelArray.splice(0, 0, channelArray);
+//Empty out channelArray and populate it with newChannelName
+          channelArray.splice(0, channelArray.length, newChannelName);
           initialAPICall(channelArray);
         }else{
           $("#addChannelForm").attr("placeholder", "invalid channel name");
           $("#addChannelForm").addClass("invalid");
-        //alert("Error: no such channel exists");
+          alert("Error: no such channel exists");
           revalidate();
           return;
         }
