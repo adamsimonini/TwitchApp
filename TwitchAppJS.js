@@ -4,6 +4,8 @@ $(document).ready(function(){
 var counter = 0;
 var gameList = [];
 var master = document.getElementById("masterDiv");
+var channelArray = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "faker", "pago3", "RobotCaleb", "noobs2ninjas", "thijshs", "timthetatman"]
+
 
   function generateDivs(counter, data){
 
@@ -58,7 +60,6 @@ var master = document.getElementById("masterDiv");
       gameList.push(data.game);
 
   }
-  var channelArray = ["ESL_SC2", "OgamingSC2", "cretetion", "freecodecamp", "faker", "pago3", "RobotCaleb", "noobs2ninjas", "thijshs", "timthetatman"]
 
     function initialAPICall(){
       for (var i=0;i<channelArray.length;i++){
@@ -75,10 +76,45 @@ var master = document.getElementById("masterDiv");
      }
   initialAPICall(channelArray);
 
-
-  function refocus(){
-    $("#addChannelForm").on("focus", $("#addChannelForm").attr("placeholder", "add new channel by name"));
+//After running initial construction of divs, empty out channelArray
+  function emptyChannelArray(){
+    channelArray.splice(0, channelArray.length);
   }
+
+  emptyChannelArray();
+
+// Removes invalid CSS class from form field
+  function revalidate(){
+    $(document).on("click", function(){
+    $("#addChannelForm").on("focus", $("#addChannelForm").removeClass("invalid"));
+    $("#addChannelForm").on("focus", $("#addChannelForm").attr("placeholder", "add new channel by name"));
+   });
+  }
+
+  function APICheck(newChannelName){
+    $.ajax({
+      dataType: "jsonp",
+      url: 'https://wind-bow.gomix.me/twitch-api/channels/' + newChannelName + '?callback=?',
+      success: function(data){
+
+//Check if data.error exists, and if it doesn't then the JSON request worked
+        if(data.error == null){
+          alert("success!")
+          channelArray.splice(0, 0, channelArray);
+          initialAPICall(channelArray);
+        }else{
+          $("#addChannelForm").attr("placeholder", "invalid channel name");
+          $("#addChannelForm").addClass("invalid");
+        //alert("Error: no such channel exists");
+          revalidate();
+          return;
+        }
+        console.log(data);
+        // generateDivs(counter, data)
+        }
+      });
+  }
+
 
 //Take string, check if it's automatically invalid or not, and pass it to function APICheck
   $("#addChannelBtn").on("click",function(e){
@@ -91,6 +127,7 @@ var master = document.getElementById("masterDiv");
     }else{
       $("#addChannelForm").attr("placeholder", "invalid channel name");
       $("#addChannelForm").addClass("invalid");
+      revalidate();
       return;
     }
 
