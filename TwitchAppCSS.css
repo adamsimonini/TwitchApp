@@ -25,11 +25,14 @@ a:hover{
 
 .channelLogo{
     border-radius: 50px;
+    border-color: red;
 }
 
-.channelLogoDiv{
+.createdDivSpacing{
     padding-bottom: 2%;
 }
+
+
 
 .gameLogo{
     background-color: white;
@@ -83,8 +86,15 @@ h1 {
   text-shadow: 2px 0px #59448a;
   font-size: 5em
 }
+/*
+.channelNameStyle{
+  color: #59448a;
+  font-family: Twitch, Arial, sans-serif;
+font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 15px
+}
 
-/* Tooltip Text
+Tooltip Text
 
 .tooltip {
     position: relative;
