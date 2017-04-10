@@ -7,6 +7,10 @@ a:hover{
   color: #cd77ff;
 }
 
+.button{
+  color: #59448a;
+}
+
 .online{
   color: green;
 }
@@ -29,14 +33,14 @@ a:hover{
 
 .gameLogo{
     background-color: white;
-    border-radius: 30px;
+    border-radius: 50px;
     padding-top: 1%;
     padding-bottom: 1%;
     opacity: 0.9;
 }
 
 .gameLogo:hover{
-    background-color: #17141f;
+    background-color: #59448a;
     opacity: 0.9;
      -webkit-transition: background-color 0.5s ease-in;
      -moz-transition: background-color 0.5s ease-in;
@@ -60,6 +64,10 @@ a:hover{
      -o-transition: background-color 0.5s ease-in;
 }
 
+.button_Icon{
+  color: white;
+}
+
 .FA_Icon {
   color: #59448a
 }
@@ -76,6 +84,31 @@ h1 {
   font-size: 5em
 }
 
-/* Possible Background Image Addition
-style="background-image: url(https://static-cdn.jtvnw.net/jtv_user_pictures/freecodecamp-profile_banner-6f5e3445ff474aec-480.png); height: 50%; width: 50%; border: 1px solid black; opacity: 0.5;"
+/* Tooltip Text
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text
+}
+
+Tooltip text
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+     Position the tooltip text - see examples below!
+    position: absolute;
+    z-index: 1;
+}
+
+ Show the tooltip text when you mouse over the tooltip container
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
 */

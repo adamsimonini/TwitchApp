@@ -53,53 +53,45 @@
     <div class="row text-center">
         <div class="large-1 small-1 columns">
         </div>
-        <button id="overwatchLogo" type="button" class="large-1 small-2 large-offset-3 small-offset-0 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491515624/overwatch_n73nxt.png" style="width:95%; height:95%;">
+        <button id="Overwatch" type="button" class="large-1 small-2 large-offset-3 small-offset-0 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491515624/overwatch_n73nxt.png" style="width:95%; height:95%;">
         </button>
-        <button id="LoLLogo" type="button" class="large-1 small-2 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491515625/league_audzul.png" style="width:93%; height:93%;">
+        <button id="LoL" type="button" class="large-1 small-2 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491515625/league_audzul.png" style="width:93%; height:93%;">
         </button>
-        <button id="SC2Logo" type="button" class="large-1 small-2 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491662365/SC2g_uegjgc.png">
+        <button id="SC2" type="button" class="large-1 small-2 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491662365/SC2g_uegjgc.png">
         </button>
-        <button id="CSLogo" type="button" class="large-1 small-2 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491515624/counterstrike_a7zlz6.png">
+        <button id="CS" type="button" class="large-1 small-2 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491515624/counterstrike_a7zlz6.png">
         </button>
-        <button id="HearthstoneLogo" type="button" class="large-1 small-2 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491519890/hearthstone_vyd71n.png">
+        <button id="Hearthstone" type="button" class="large-1 small-2 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491519890/hearthstone_vyd71n.png">
         </button>
-        <button id="CodingLogo" type="button" class="large-1 small-2 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491515625/coding2_ykyefl.png">
+        <button id="Coding" type="button" class="large-1 small-2 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491515625/coding2_ykyefl.png">
         </button>
-        <div type="button" class="large-1 small-0 columns">
-        </div>
+        <button id="Refresh" title="Show All" type="button" class="large-1 small-0 columns gameLogo text-center end"><img src="http://res.cloudinary.com/redkasa/image/upload/v1491779279/refreshblue_qunduh.png">
+        </button>
     </div>
     <br>
 
+
 <!--Add A Channel -->
-<form>
-  <div class="large-12 columns">
-    <div class="row collapse postfix-round">
-      <div class="large-4 small-4 large-offset-4 small-offset-4 columns">
-        <input id="addChannelForm" onsubmit="return false" class="text-center" type="text" placeholder="add new channel by name">
-      </div>
-      <div class="large-1 small-3 columns">
-        <button id="addChannelBtn" href="#" class="button postfix"><i class="fa fa-plus fa-1x FA_Icon"></i></button>
-      </div>
-      <div class="large-2 small-3 columns">
-      </div>
-    </div>
-  </div>
-</form>
-    <!-- Search Field -->
-    <form>
-      <div class="large-12 columns">
-        <div class="row collapse postfix-round">
-          <div class="large-4 small-4 large-offset-4 small-offset-4 columns">
-            <input onsubmit="return false" class="text-center" type="text" placeholder="search channels by name">
-          </div>
-          <div class="large-1 small-3 columns">
-            <button href="#" class="button postfix"><i class="fa fa-search fa-1x FA_Icon"></i></button>
-          </div>
-          <div class="large-2 small-3 columns">
-          </div>
+  <div class="row">
+      <div class="row collapse postfix-round">
+        <div class="large-2 small-2 large-offset-3 small-offset-3 columns">
+          <input id="addChannelForm" onsubmit="return false" class="text-center" type="text" placeholder="add new channel">
+        </div>
+        <div class="large-1 small-1 columns">
+          <button id="addChannelBtn" href="#" class="button postfix"><i class="fa fa-plus fa-1x button_Icon"></i></button>
+        </div>
+        <div class="large-1 small-1 columns">
+        </div>
+        <div class="large-2 small-2 columns">
+          <input id="searchInput" onsubmit="return false" class="text-center" type="text" placeholder="search channels">
+        </div>
+        <div class="large-1 small-1 columns">
+          <button id="searchChannelBtn" href="#" class="button postfix"><i class="fa fa-search fa-1x button_Icon"></i></button>
+        </div>
+        <div class="large-2 small-2 columns">
         </div>
       </div>
-    </form>
+  </div>
 <br>
 
 <!--The Master Div That Will House All Dynamically Created Divs-->
