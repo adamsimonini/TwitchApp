@@ -15,13 +15,14 @@ $(document).ready(function(){
         dataType: "jsonp",
         url: 'https://wind-bow.gomix.me/twitch-api/streams/' + channelArray[i],
         success: function(data2){
-          if(data2.stream === null){
+          if(data2.stream != null){
             console.log(data2.stream);
             $("#status" + [i]).removeClass("online");
             $("#status" + [i]).addClass("offline");
             }
-            else if(data2.stream !== null){
+            else{
               console.log(data2.stream);
+              $("#status" + [i]).removeClass("offline");
               $("#status" + [i]).addClass("online");
             }
           }
@@ -109,7 +110,7 @@ $(document).ready(function(){
   function revalidate(){
     $(document).on("click", function(){
     $("#addChannelForm").on("focus", $("#addChannelForm").removeClass("invalid"));
-    $("#addChannelForm").on("focus", $("#addChannelForm").attr("placeholder", "add new channel"));
+    $("#searchInput").on("focus", $("#searchInput").removeClass("invalid"));
    });
   }
 
@@ -169,19 +170,37 @@ $(document).ready(function(){
     }
   });
 
-// Seach Channels button
+// Seach Channels Function
   function searchChannels(){
-    var searchInput =  document.getElementById("searchInput").value.toLowerCase();
-      for(var i=1;i<=arrayLengthCounter;i++){
-        if(document.getElementById("name" + [i]).innerHTML.toLowerCase().indexOf(searchInput)){
-          $("#feed" + i).hide(3000);
-        }else{
-          $("#feed" + i).show(3000);
-        }
-      }
+    var array2string = channelArray.toString();
+    var checkit = array2string.toLowerCase();
+    var back2array = checkit.split(",");
+
+    var rawInput = document.getElementById("searchInput").value;
+    var searchInput = rawInput.toLowerCase();
+    var x = ""
+
+    if(back2array.indexOf(searchInput) >=0 ){
+          for(var i=1;i<=arrayLengthCounter;i++){
+            x = document.getElementById("name" + i).innerHTML.toLowerCase();
+            if(x.indexOf(searchInput) >=0){
+              $("#feed" + i).show(3000);
+            }else{
+              $("#feed" + i).hide(3000);
+            }
+          }
+    }else{
+      $("#searchInput").attr("placeholder", "no such channel found");
+      $("#searchInput").addClass("invalid");
+      alert("Error: cannot find channel");
+      revalidate();
+      return;
+    }
   }
+
   $("#searchChannelBtn").on("click", function(){
     searchChannels();
     document.getElementById("searchInput").value = "";
   });
+
 });
