@@ -4,31 +4,34 @@ $(document).ready(function(){
   var counter = 0;
   var gameList = [];
   var master = document.getElementById("masterDiv");
-  var channelArray = ["AdamJSim", "bratishkinoff", "ESL_SC2", "ESL_CSGO", "OgamingSC2", "cretetion", "freecodecamp", "faker", "veggie16", "MadaPLS", "pago3", "RobotCaleb", "noobs2ninjas", "thijshs", "timthetatman", "Valkia", "Kephrii", "Gale_Adelade", "ZelosSC"]
+  var channelArray = ["AdamJSim", "bratishkinoff", "PlayHearthstone", "ESL_SC2", "Forsenlol", "ESL_CSGO", "OgamingSC2", "cretetion", "freecodecamp", "faker", "veggie16", "MadaPLS", "pago3", "RobotCaleb", "noobs2ninjas", "thijshs", "timthetatman", "Valkia", "Kephrii", "Gale_Adelade", "ZelosSC"]
   var arrayLengthCounter = channelArray.length;
 
 //Check if stream is online or not
-
-  function streamStatus(arrayLengthCounter){
+/*
+  function streamStatus(){
+    var a = "";
     for (var i=0;i<channelArray.length;i++){
+      var d = channelArray[i];
       $.ajax({
         dataType: "jsonp",
-        url: 'https://wind-bow.gomix.me/twitch-api/streams/' + channelArray[i],
+        url: 'https://wind-bow.gomix.me/twitch-api/streams/' + d,
         success: function(data2){
-          if(data2.stream != null){
-            console.log(data2.stream);
-            $("#status" + [i]).removeClass("online");
-            $("#status" + [i]).addClass("offline");
-            }
-            else{
-              console.log(data2.stream);
-              $("#status" + [i]).removeClass("offline");
-              $("#status" + [i]).addClass("online");
-            }
+          console.log(data2.stream);
+          for (var ii=1;ii<=channelArray.length;ii++){
+            a = document.getElementById('name' + ii).innerHTML.toString();
+              if(data2.stream == null && a.includes(d)){
+                console.log("offline!");
+              }else if(a.includes(d) && data2.stream != null){
+                console.log("online!");
+                $("#logo" + ii).removeClass("offline").addClass("online");
+              }
           }
-        });
-     }
-   }
+        }
+      });
+    }
+  }
+*/
 
   function generateDivs(counter, data){
 
@@ -79,11 +82,11 @@ $(document).ready(function(){
           newDiv.className += "Unknown";
       }
 
-      newDiv.innerHTML = '<div id="parentDiv' + counter + '" class="row text-center"><div class="large-1 small-1 columns large-offset-3 small-offset-3 createdDivSpacing"><a id="logolink' + counter + '" href=' + data.url + ' target="_blank"><img id="logo' + counter + '" class="channelLogo" src=""></a></div><a href=' + data.url + ' target="_blank"><div id="name' + counter + '" class="small-4 large-4 columns channelNameStyle" style="border-bottom-style:solid;"><div class="row"><div id="status' + counter + '" class="large-12 small-12" style="border-style:solid;">STATUS</div></div></div></a><div class="large-1 small-2 columns"><img id="gameCheck height="75%" width="75%"' + counter + '" src=' + gameLogoURL + '></div><div class="large-1 columns end"></div></div>';
+      newDiv.innerHTML = '<div id="parentDiv' + counter + '" class="row text-center"><div class="large-1 small-1 columns large-offset-3 small-offset-3 createdDivSpacing"><a id="logolink' + counter + '" href=' + data.url + ' target="_blank"><img id="logo' + counter + '" class="channelLogo" src=""></a></div><a href=' + data.url + ' target="_blank"><div id="name' + counter + '" class="small-4 large-4 columns channelNameStyle" style="border-bottom-style:solid;"><div class="row"><div id="status' + counter + '" class="large-12 small-12" style="border-style:solid;"></div></div></div></a><div class="large-1 small-2 columns"><img id="gameCheck height="75%" width="75%"' + counter + '" src=' + gameLogoURL + '></div><div class="large-1 columns end"></div></div>';
 
       master.prepend(newDiv);
       document.getElementById("logo" + counter).src = data.logo;
-      document.getElementById("name" + counter).innerHTML = "<strong>" + data.display_name + "</strong> <i id='status" + counter + "' class='online fa fa-power-off fa-1x'></i><div class='text-center'><i>" + data.status +"</i></div>";
+      document.getElementById("name" + counter).innerHTML = "<strong>" + data.display_name + "</strong> <i id='status" + counter + "' class='fa fa-power-off fa-1x'></i><div class='text-center'><i>" + data.status +"</i></div>";
   //  document.getElementById("status" + counter).innerHTML = data.status;
       document.getElementById("logolink" + counter).href = data.url;
       gameList.push(data.game);
@@ -99,12 +102,12 @@ $(document).ready(function(){
             counter++;
             arrayLengthCounter++;
             generateDivs(counter, data)
+            //streamStatus();
             }
           });
        }
      }
-  initialAPICall(channelArray);
-  streamStatus();
+  initialAPICall();
 
 // Removes invalid CSS class from form field
   function revalidate(){
@@ -155,7 +158,7 @@ $(document).ready(function(){
 
 //Listen for logo filter and hide elemts without corresponding class
   $(".gameLogo").on("click", function(){
-  //  streamStatus();
+    //streamStatus();
     var gameClicked = this.id;
     for(var i=0;i<=arrayLengthCounter;i++){
       if(gameClicked == "Refresh"){
@@ -163,8 +166,11 @@ $(document).ready(function(){
       }else{
         if($("#feed" + i).hasClass(gameClicked)){
           $("#feed" + i).show(2500);
+  //        $("#logo" + i).removeClass("offline").addClass("online");
+          console.log($("#logo" + i));
         }else{
           $("#feed" + i).hide(2500);
+  //       $("#logo" + i).removeClass("online").addClass("offline");
         }
       }
     }
@@ -199,8 +205,8 @@ $(document).ready(function(){
   }
 
   $("#searchChannelBtn").on("click", function(){
+  //  streamStatus();
     searchChannels();
     document.getElementById("searchInput").value = "";
   });
-
 });

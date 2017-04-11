@@ -12,11 +12,11 @@ a:hover{
 }
 
 .online{
-  color: green;
+    border:3px solid green;
 }
 
 .offline{
-  color: red;
+    border:3px solid red;
 }
 
 .invalid{
@@ -25,7 +25,6 @@ a:hover{
 
 .channelLogo{
     border-radius: 50px;
-    border-color: red;
 }
 
 .createdDivSpacing{
