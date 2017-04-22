@@ -105,15 +105,16 @@ $(document).ready(function(){
           counter++;
           arrayLengthCounter++;
           //streamStatus();
+          checkChannelStatus(data);
         }
       });
     }
   }
 
-  function checkChannelStatus(data, display_name) {
+  function checkChannelStatus(data) {
     $.ajax({
       dataType: "jsonp",
-      url: 'https://wind-bow.gomix.me/twitch-api/streams/' + display_name,
+      url: 'https://wind-bow.gomix.me/twitch-api/streams/' + data.display_name,
       success: function (data2) {
         generateDivs(data, data2.status);
       }
