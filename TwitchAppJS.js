@@ -4,7 +4,7 @@ $(document).ready(function(){
   var counter = 0;
   var gameList = [];
   var master = document.getElementById("masterDiv");
-  var channelArray = ["AdamJSim", "bratishkinoff", "PlayHearthstone", "ESL_SC2", "Forsenlol", "ESL_CSGO", "OgamingSC2", "cretetion", "freecodecamp", "faker", "veggie16", "MadaPLS", "pago3", "RobotCaleb", "noobs2ninjas", "thijshs", "timthetatman", "Valkia", "Kephrii", "Gale_Adelade", "ZelosSC"]
+  var channelArray = ["bratishkinoff", "PlayHearthstone", "ESL_SC2", "Forsenlol", "ESL_CSGO", "OgamingSC2", "cretetion", "freecodecamp", "faker", "veggie16", "MadaPLS", "pago3", "RobotCaleb", "noobs2ninjas", "thijshs", "timthetatman", "Valkia", "Kephrii", "Gale_Adelade", "ZelosSC", "AdamJSim"]
   var arrayLengthCounter = channelArray.length;
 
 //Check if stream is online or not
@@ -34,6 +34,8 @@ $(document).ready(function(){
 */
 
   function generateDivs(counter, data){
+
+    //  setTimeout(function() {   },3000);
 
       var newDiv = document.createElement("div");
       newDiv.id = "feed" + counter;
@@ -91,25 +93,28 @@ $(document).ready(function(){
       document.getElementById("logolink" + counter).href = data.url;
       gameList.push(data.game);
 
+
   }
 
     function initialAPICall(arrayLengthCounter){
       for (var i=0;i<channelArray.length;i++){
+  //setTimeout(function(){   }, 2000);
+
         $.ajax({
           dataType: "jsonp",
-          url: 'https://wind-bow.gomix.me/twitch-api/channels/' + channelArray[i] + '?callback=?',
+          url: 'https://wind-bow.glitch.me/twitch-api/channels/' + channelArray[i] + '?callback=?',
           success: function(data){
             counter++;
             arrayLengthCounter++;
-            generateDivs(counter, data)
+            generateDivs(counter, data);
             //streamStatus();
-            }
-          });
-       }
+          }
+        });
      }
-  initialAPICall();
+    }
+     initialAPICall();
 
-// Removes invalid CSS class from form field
+//Removes invalid CSS class from form field
   function revalidate(){
     $(document).on("click", function(){
     $("#addChannelForm").on("focus", $("#addChannelForm").removeClass("invalid"));
