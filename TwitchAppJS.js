@@ -96,22 +96,30 @@ $(document).ready(function(){
 
   }
 
-    function initialAPICall(arrayLengthCounter){
-      for (var i=0;i<channelArray.length;i++){
-  //setTimeout(function(){   }, 2000);
-
-        $.ajax({
-          dataType: "jsonp",
-          url: 'https://wind-bow.glitch.me/twitch-api/channels/' + channelArray[i] + '?callback=?',
-          success: function(data){
-            counter++;
-            arrayLengthCounter++;
-            generateDivs(counter, data);
-            //streamStatus();
-          }
-        });
-     }
+  function initialAPICall(arrayLengthCounter) {
+    for (var i = 0; i < channelArray.length; i++) {
+      $.ajax({
+        dataType: "jsonp",
+        url: 'https://wind-bow.glitch.me/twitch-api/channels/' + channelArray[i] + '?callback=?',
+        success: function (data) {
+          counter++;
+          arrayLengthCounter++;
+          //streamStatus();
+          checkChannelStatus(data);
+        }
+      });
     }
+  }
+
+  function checkChannelStatus(data) {
+    $.ajax({
+      dataType: "jsonp",
+      url: 'https://wind-bow.gomix.me/twitch-api/streams/' + data.display_name,
+      success: function (data2) {
+        generateDivs(data, data2.status);
+      }
+    });
+  }
      initialAPICall();
 
 //Removes invalid CSS class from form field
