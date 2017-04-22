@@ -1,0 +1,123 @@
+
+a{
+  color: #59448a;
+}
+
+a:hover{
+  color: #cd77ff;
+}
+
+.button{
+  color: #59448a;
+}
+
+.online{
+    border:3px solid green;
+}
+
+.offline{
+    border:3px solid red;
+}
+
+.invalid{
+    background-color: #9e0000;
+}
+
+.channelLogo{
+    border-radius: 50px;
+}
+
+.createdDivSpacing{
+    padding-bottom: 2%;
+}
+
+
+
+.gameLogo{
+    background-color: white;
+    border-radius: 50px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    opacity: 0.9;
+}
+
+.gameLogo:hover{
+    background-color: #59448a;
+    opacity: 0.9;
+     -webkit-transition: background-color 0.5s ease-in;
+     -moz-transition: background-color 0.5s ease-in;
+     -o-transition: background-color 0.5s ease-in;
+}
+
+
+.social{
+    background-color: white;
+    border-radius: 30px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    opacity: 0.6;
+}
+
+.social:hover{
+    background-color: #17141f;
+    opacity: 0.9;
+     -webkit-transition: background-color 0.5s ease-in;
+     -moz-transition: background-color 0.5s ease-in;
+     -o-transition: background-color 0.5s ease-in;
+}
+
+.button_Icon{
+  color: white;
+}
+
+.FA_Icon {
+  color: #59448a
+}
+
+@font-face {
+  font-family: Twitch; src: url("twitch.otf");
+}
+
+h1 {
+  color: #59448a;
+  font-family: Twitch, Arial, sans-serif;
+  /*font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;*/
+  text-shadow: 2px 0px #59448a;
+  font-size: 5em
+}
+/*
+.channelNameStyle{
+  color: #59448a;
+  font-family: Twitch, Arial, sans-serif;
+font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 15px
+}
+
+Tooltip Text
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text
+}
+
+Tooltip text
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+
+     Position the tooltip text - see examples below!
+    position: absolute;
+    z-index: 1;
+}
+
+ Show the tooltip text when you mouse over the tooltip container
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}
+*/

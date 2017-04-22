@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <title> Twitch Channel Status </title>
+
+    <!-- Tab Icon -->
+    <link rel="icon" href="http://res.cloudinary.com/redkasa/image/upload/v1491615507/580b57fcd9996e24bc43c540_sfri3x.png">
+
+    <!-- JQUERY -->
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"></script>
+
+      <!-- Foundation & Modernizr -->
+      <script src="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.js"></script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/foundation/6.2.4/foundation.min.css" />
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+
+      <!--Font Awesome-->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      <!-- Custom JS & CSS -->
+      <script src = "C:\Users\Adam's Laptop\Google Drive\JSProjects\TwitchApp\TwitchAppJS.js"></script>
+      <link rel="stylesheet" href="C:\Users\Adam's Laptop\Google Drive\JSProjects\TwitchApp\TwitchAppCSS.css">
+
+      <!-- Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Playfair+Display+SC" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+
+    <br>
+    <br>
+    <div class="row">
+      <div class="large-0 small-0 columns">
+      </div>
+    </div class="large-12 small-11 small-centered columns">
+        <h1 class="text-center"> twitch <a href="https://www.twitch.tv/" target="_blank"><i class="fa fa-twitch fa-1x FA_Icon"></i></a> status </h1>
+      </div>
+      <div class="large-0 small-0 columns">
+      </div>
+    </div>
+    <br>
+    <br>
+
+  <!-- ICON Bar for filtering via game-->
+    <div class="row text-center">
+        <div class="large-1 small-1 columns">
+        </div>
+        <button id="Overwatch" type="button" class="large-1 small-2 large-offset-3 small-offset-0 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491515624/overwatch_n73nxt.png" style="width:95%; height:95%;">
+        </button>
+        <button id="LoL" type="button" class="large-1 small-2 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491515625/league_audzul.png" style="width:93%; height:93%;">
+        </button>
+        <button id="SC2" type="button" class="large-1 small-2 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491662365/SC2g_uegjgc.png">
+        </button>
+        <button id="CS" type="button" class="large-1 small-2 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491515624/counterstrike_a7zlz6.png">
+        </button>
+        <button id="Hearthstone" type="button" class="large-1 small-2 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491519890/hearthstone_vyd71n.png">
+        </button>
+        <button id="Coding" type="button" class="large-1 small-2 columns gameLogo"> <img src="http://res.cloudinary.com/redkasa/image/upload/v1491515625/coding2_ykyefl.png">
+        </button>
+        <button id="Refresh" title="Show All" type="button" class="large-1 small-0 columns gameLogo text-center end"><img src="http://res.cloudinary.com/redkasa/image/upload/v1491779279/refreshblue_qunduh.png">
+        </button>
+    </div>
+    <br>
+
+
+<!--Add A Channel -->
+  <div class="row">
+      <div class="row collapse postfix-round">
+        <div class="large-2 small-2 large-offset-3 small-offset-3 columns">
+          <input id="addChannelForm" onsubmit="return false" class="text-center" type="text" placeholder="add new channel">
+        </div>
+        <div class="large-1 small-1 columns">
+          <button id="addChannelBtn" href="#" class="button postfix"><i class="fa fa-plus fa-1x button_Icon"></i></button>
+        </div>
+        <div class="large-1 small-1 columns">
+        </div>
+        <div class="large-2 small-2 columns">
+          <input id="searchInput" onsubmit="return false" class="text-center" type="text" placeholder="search channels">
+        </div>
+        <div class="large-1 small-1 columns">
+          <button id="searchChannelBtn" href="#" class="button postfix"><i class="fa fa-search fa-1x button_Icon"></i></button>
+        </div>
+        <div class="large-2 small-2 columns">
+        </div>
+      </div>
+  </div>
+<br>
+
+<!--The Master Div That Will House All Dynamically Created Divs-->
+
+  <div id="masterDiv">
+
+  </div>
+  <!-- Display Results of Search in Columns-->
+
+  <br>
+  <br>
+
+
+<!-- SOCIAL ICONS   -->
+  <br>
+      <div class="row">
+            <div class="small-4 text-center small columns social">
+              <a href="https://github.com/collabitron"> <i class="fa fa-github fa-5x FA_Icon" ></i><a/>
+            </div>
+            <div class="small-4 text-center columns social">
+              <a href="http://codepen.io/AJSIM/"><i class="fa fa-codepen fa-5x FA_Icon"></i><a/>
+            </div>
+            <div class="small-4 text-center columns social">
+              <a href="https://adamsimonini.com/"><i class="fa fa-user-o fa-5x FA_Icon"></i><a/>
+        </div>
+      </div>
+
+  </body>
+
+</html>
